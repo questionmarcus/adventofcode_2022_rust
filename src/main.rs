@@ -1,10 +1,11 @@
 use std::fs::read_to_string;
 
-pub mod day01;
-pub mod day02;
-pub mod day03;
-pub mod day04;
-pub mod day05;
+mod day01;
+mod day02;
+mod day03;
+mod day04;
+mod day05;
+mod day06;
 
 fn main() {
     println!("### Day 01 ###");
@@ -51,5 +52,14 @@ fn main() {
     println!(
         "> Part 2 solution: {}",
         day05::part_two(&read_to_string("src/data/day05.txt").unwrap())
+    );
+    println!("### Day 06 ###");
+    println!(
+        "> Part 1 solution: {}",
+        day06::part_one(&read_to_string("src/data/day06.txt").unwrap())
+    );
+    println!(
+        "> Part 2 solution: {}",
+        day06::part_two(&read_to_string("src/data/day06.txt").unwrap())
     );
 }
