@@ -8,6 +8,7 @@ mod day05;
 mod day06;
 mod day07;
 mod day08;
+mod day09;
 
 fn main() {
     println!("### Day 01 ###");
@@ -81,5 +82,14 @@ fn main() {
     println!(
         "> Part 2 solution: {}",
         day08::part_two(&read_to_string("src/data/day08.txt").unwrap())
+    );
+    println!("### Day 09 ###");
+    println!(
+        "> Part 1 solution: {}",
+        day09::part_one(&read_to_string("src/data/day09.txt").unwrap())
+    );
+    println!(
+        "> Part 2 solution: {}",
+        day09::part_two(&read_to_string("src/data/day09.txt").unwrap())
     );
 }

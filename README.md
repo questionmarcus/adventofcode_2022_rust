@@ -29,5 +29,8 @@ First time trying advent of code... first time doing more than rustlings in Rust
 * Day 08
     * Part 1 solution: 1794
     * Part 2 solution: 199272
+* Day 09
+    * Part 1 solution: 5960
+    * Part 2 solution: 2327
 
 </details>
