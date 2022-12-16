@@ -10,6 +10,7 @@ mod day07;
 mod day08;
 mod day09;
 mod day10;
+mod day11;
 
 fn main() {
     for (day_index, (part_one_output, part_two_output)) in
@@ -62,6 +63,10 @@ fn get_problem_output_strings() -> Vec<(String, String)> {
         (
             day10::part_one(&read_to_string("src/data/day10.txt").unwrap()).to_string(),
             day10::part_two(&read_to_string("src/data/day10.txt").unwrap()).to_string(),
+        ),
+        (
+            day11::part_one(&read_to_string("src/data/day11.txt").unwrap()).to_string(),
+            day11::part_two(&read_to_string("src/data/day11.txt").unwrap()).to_string(),
         ),
     ]
 }
