@@ -104,9 +104,12 @@ impl Monkey {
         }
     }
 
-    pub fn inspect_item_part_two(&mut self) -> Option<PassToMonkeyInstruction> {
+    pub fn inspect_item_part_two(
+        &mut self,
+        lowest_common_modulo: u64,
+    ) -> Option<PassToMonkeyInstruction> {
         if let Some(current_item) = self.items.pop_front() {
-            let new_item_value = self.get_bordom_value(current_item, 1);
+            let new_item_value = self.get_bordom_value(current_item, 1) % lowest_common_modulo;
             self.inspection_count += 1;
 
             if new_item_value % self.divisible_by_check == 0 {
@@ -129,10 +132,7 @@ impl Monkey {
     fn get_bordom_value(&self, item_value: u64, worry_denominator: u64) -> u64 {
         match self.operation {
             Operand::Plus(amount) => (item_value + amount) / worry_denominator,
-            Operand::Multiply(amount) => {
-                println!("{} x {}", item_value, amount);
-                (item_value * amount) / worry_denominator
-            }
+            Operand::Multiply(amount) => (item_value * amount) / worry_denominator,
             Operand::Pow(amount) => (item_value.pow(amount)) / worry_denominator,
         }
     }
@@ -169,13 +169,18 @@ pub fn part_one(input: &str) -> u64 {
 pub fn part_two(input: &str) -> u64 {
     let mut monkeys: Vec<Monkey> = input.split("\n\n").map(Monkey::from).collect();
 
-    for _round in 0..20 {
-        println!("round {}", _round + 1);
+    let lowest_common_modulo: u64 = monkeys
+        .iter()
+        .map(|monkey| monkey.divisible_by_check)
+        .product();
+
+    for _round in 0..10000 {
         for monkey_index in 0..monkeys.len() {
             for _ in 0..monkeys[monkey_index].items.len() {
                 let current_monkey = monkeys.get_mut(monkey_index).unwrap();
-                let PassToMonkeyInstruction(item_value, monkey_index) =
-                    current_monkey.inspect_item_part_two().unwrap();
+                let PassToMonkeyInstruction(item_value, monkey_index) = current_monkey
+                    .inspect_item_part_two(lowest_common_modulo)
+                    .unwrap();
 
                 monkeys
                     .get_mut(monkey_index)
