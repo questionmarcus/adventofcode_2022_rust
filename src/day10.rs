@@ -92,10 +92,10 @@ impl<'a, T: ProcessorObserver> Processor<'a, T> {
 impl From<&str> for Operation {
     fn from(input: &str) -> Self {
         if input == "noop" {
-            return Operation::Noop;
+            Operation::Noop
         } else {
             let (_, add_val) = input.split_at(4);
-            return Operation::AddX(add_val.trim().parse::<i32>().unwrap());
+            Operation::AddX(add_val.trim().parse::<i32>().unwrap())
         }
     }
 }

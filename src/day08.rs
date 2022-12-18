@@ -17,7 +17,7 @@ impl From<&str> for Forest {
                 .filter_map(|char| char.parse::<u8>().ok())
                 .collect();
 
-            if columns.len() == 0 {
+            if columns.is_empty() {
                 for _ in 0..heights.len() {
                     columns.push(Vec::new())
                 }

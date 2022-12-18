@@ -114,14 +114,14 @@ pub fn part_one(input: &str) -> u32 {
         .map(|game| {
             let game_arr: [&str; 2] = game
                 .trim()
-                .split(" ")
+                .split(' ')
                 .take(2)
                 .collect::<Vec<&str>>()
                 .try_into()
                 .unwrap();
             Game::from_part_one(game_arr)
         })
-        .map(|game| get_game_score(game))
+        .map(get_game_score)
         .sum()
 }
 
@@ -131,14 +131,14 @@ pub fn part_two(input: &str) -> u32 {
         .map(|game| {
             let game_arr: [&str; 2] = game
                 .trim()
-                .split(" ")
+                .split(' ')
                 .take(2)
                 .collect::<Vec<&str>>()
                 .try_into()
                 .unwrap();
             Game::from_part_two(game_arr)
         })
-        .map(|game| get_game_score(game))
+        .map(get_game_score)
         .sum()
 }
 

@@ -50,14 +50,14 @@ impl RopePosition {
                 segment_end.0 += dx.signum();
                 segment_end.1 += dy.signum();
             }
-            segment_start = segment_end.clone();
+            segment_start = *segment_end;
         }
     }
 }
 
 impl From<&str> for Instruction {
     fn from(line: &str) -> Self {
-        let (dir, count) = line.trim().split_once(" ").unwrap();
+        let (dir, count) = line.trim().split_once(' ').unwrap();
 
         let parsed_count: usize = count.parse().unwrap();
         match dir {

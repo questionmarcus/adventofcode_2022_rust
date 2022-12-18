@@ -58,9 +58,8 @@ fn get_dir_sizes(input: &str) -> HashMap<PathBuf, u32> {
 
                 let mut parent_path = current_path.clone();
                 while parent_path.pop() {
-                    match dir_sizes.get_mut(&parent_path) {
-                        Some(volume) => *volume += size,
-                        None => (),
+                    if let Some(volume) = dir_sizes.get_mut(&parent_path) {
+                        *volume += size
                     }
                 }
             }
@@ -71,7 +70,7 @@ fn get_dir_sizes(input: &str) -> HashMap<PathBuf, u32> {
 }
 
 fn append_dir(path: PathBuf, dir: String) -> PathBuf {
-    path.join(&dir)
+    path.join(dir)
 }
 
 fn strip_last_dir(path: PathBuf) -> PathBuf {

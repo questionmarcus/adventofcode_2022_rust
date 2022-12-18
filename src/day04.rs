@@ -8,7 +8,7 @@ fn get_ranges(range_pair: &str) -> Ranges {
         .split(',')
         .map(|range| {
             let mut range_iter = range
-                .split("-")
+                .split('-')
                 .map(|val| val.parse::<u32>().unwrap())
                 .take(2);
             RangeInclusive::new(range_iter.next().unwrap(), range_iter.next().unwrap())

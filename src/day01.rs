@@ -2,7 +2,7 @@ pub fn part_one(input: &str) -> u32 {
     input
         .split("\n\n")
         .map(|elf| {
-            elf.split("\n")
+            elf.lines()
                 .map(|calorie| calorie.trim().parse::<u32>().unwrap())
                 .sum::<u32>()
         })
@@ -14,7 +14,7 @@ pub fn part_two(input: &str) -> u32 {
     let mut calories_per_elf: Vec<u32> = input
         .split("\n\n")
         .map(|elf| {
-            elf.split("\n")
+            elf.lines()
                 .map(|calorie| calorie.trim().parse::<u32>().unwrap())
                 .sum::<u32>()
         })
